@@ -49,7 +49,7 @@ class Record(Base):
                 _______________________________________________________________  
                    
                 FIRST NAME = {self.first_name}
-                LAST NAME = {self.first_name}
+                LAST NAME = {self.last_name}
 
                     CATEGORY:                     SCORE:
                     1.) General Appearence ---------- {self.general_appearence}
@@ -60,7 +60,9 @@ class Record(Base):
                     6.) Ability to Present Ideas ---- {self.abilitity_to_present_ideas}
                     7.) Communication Skills -------- {self.communication_skills}
                     8.) Student Performance Rating -- {self.student_performance_rating}
-                    9.) PREDICTION ------------------ {self.prediction} 
+
+                    Mean Score ---------------------- {self.mean_score}
+                    PREDICTION ---------------------- {self.prediction} 
                 _______________________________________________________________  
             """
         )
@@ -72,8 +74,14 @@ connection_string = 'sqlite:///' + os.path.join(BASE_DIR, 'records.db')
 engine = create_engine(connection_string, echo = True)
 
 Session = sessionmaker()
+session = Session(bind = engine)
+
+def create_all_table():
+    Base.metadata.create_all(engine)
 
 if __name__ == "__main__":
-    Base.metadata.create_all(engine)
+    create_all_table()
+
+    
 
 

@@ -11,9 +11,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_ScoreRecord(object):
     def setupUi(self, ScoreRecord):
         ScoreRecord.setObjectName("ScoreRecord")
-        ScoreRecord.resize(590, 712)
+        ScoreRecord.resize(591, 712)
         self.frame_2 = QtWidgets.QFrame(ScoreRecord)
-        self.frame_2.setGeometry(QtCore.QRect(-10, 250, 611, 381))
+        self.frame_2.setGeometry(QtCore.QRect(-10, 250, 611, 351))
         self.frame_2.setStyleSheet("background-color: \"#026728\";")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -179,13 +179,13 @@ class Ui_ScoreRecord(object):
         self.label_sp.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_sp.setObjectName("label_sp")
         self.frame = QtWidgets.QFrame(self.frame_2)
-        self.frame.setGeometry(QtCore.QRect(10, 80, 291, 301))
+        self.frame.setGeometry(QtCore.QRect(10, 80, 291, 271))
         self.frame.setStyleSheet("background-color: \"#02220E\";")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.frame_3 = QtWidgets.QFrame(self.frame_2)
-        self.frame_3.setGeometry(QtCore.QRect(300, 80, 301, 301))
+        self.frame_3.setGeometry(QtCore.QRect(300, 80, 311, 271))
         self.frame_3.setStyleSheet("background-color: \"#034A2C\";")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -217,8 +217,22 @@ class Ui_ScoreRecord(object):
         self.label_image_2.setPixmap(QtGui.QPixmap("icon.png"))
         self.label_image_2.setScaledContents(True)
         self.label_image_2.setObjectName("label_image_2")
+        self.btn_back_to_main = QtWidgets.QPushButton(ScoreRecord)
+        self.btn_back_to_main.setGeometry(QtCore.QRect(220, 650, 151, 51))
+        self.btn_back_to_main.setStyleSheet("QPushButton{\n"
+"    font-size : 15px;\n"
+"    background-color : \"#F87E2E\";\n"
+"    color: \"white\";\n"
+"    font-weight: bold;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    background-color : \"#FFD139\";\n"
+"}")
+        self.btn_back_to_main.setObjectName("btn_back_to_main")
         self.btn_back = QtWidgets.QPushButton(ScoreRecord)
-        self.btn_back.setGeometry(QtCore.QRect(220, 650, 151, 51))
+        self.btn_back.setGeometry(QtCore.QRect(20, 650, 151, 51))
         self.btn_back.setStyleSheet("QPushButton{\n"
 "    font-size : 15px;\n"
 "    background-color : \"#F87E2E\";\n"
@@ -231,9 +245,9 @@ class Ui_ScoreRecord(object):
 "    background-color : \"#FFD139\";\n"
 "}")
         self.btn_back.setObjectName("btn_back")
-        self.btn_back_2 = QtWidgets.QPushButton(ScoreRecord)
-        self.btn_back_2.setGeometry(QtCore.QRect(20, 650, 151, 51))
-        self.btn_back_2.setStyleSheet("QPushButton{\n"
+        self.btn_predict = QtWidgets.QPushButton(ScoreRecord)
+        self.btn_predict.setGeometry(QtCore.QRect(420, 650, 151, 51))
+        self.btn_predict.setStyleSheet("QPushButton{\n"
 "    font-size : 15px;\n"
 "    background-color : \"#F87E2E\";\n"
 "    color: \"white\";\n"
@@ -244,21 +258,17 @@ class Ui_ScoreRecord(object):
 "QPushButton:hover{\n"
 "    background-color : \"#FFD139\";\n"
 "}")
-        self.btn_back_2.setObjectName("btn_back_2")
-        self.btn_back_3 = QtWidgets.QPushButton(ScoreRecord)
-        self.btn_back_3.setGeometry(QtCore.QRect(420, 650, 151, 51))
-        self.btn_back_3.setStyleSheet("QPushButton{\n"
-"    font-size : 15px;\n"
-"    background-color : \"#F87E2E\";\n"
-"    color: \"white\";\n"
-"    font-weight: bold;\n"
-"    border-radius: 4px;\n"
-"}\n"
+        self.btn_predict.setObjectName("btn_predict")
+        self.label_error = QtWidgets.QLabel(ScoreRecord)
+        self.label_error.setGeometry(QtCore.QRect(0, 610, 591, 31))
+        self.label_error.setStyleSheet("font-size: 15px;\n"
+"color: red;\n"
+"qproperty-alignment: AlignCenter;\n"
+"font-weight: bold;\n"
 "\n"
-"QPushButton:hover{\n"
-"    background-color : \"#FFD139\";\n"
-"}")
-        self.btn_back_3.setObjectName("btn_back_3")
+"")
+        self.label_error.setWordWrap(True)
+        self.label_error.setObjectName("label_error")
 
         self.retranslateUi(ScoreRecord)
         QtCore.QMetaObject.connectSlotsByName(ScoreRecord)
@@ -276,9 +286,10 @@ class Ui_ScoreRecord(object):
         self.label_ip.setText(_translate("ScoreRecord", "Idea Presentation"))
         self.label_c.setText(_translate("ScoreRecord", "Communication"))
         self.label_sp.setText(_translate("ScoreRecord", "Student Performance "))
-        self.btn_back.setText(_translate("ScoreRecord", "<< BACK TO MAIN"))
-        self.btn_back_2.setText(_translate("ScoreRecord", "<< BACK "))
-        self.btn_back_3.setText(_translate("ScoreRecord", "PREDICT"))
+        self.btn_back_to_main.setText(_translate("ScoreRecord", "<< BACK TO MAIN"))
+        self.btn_back.setText(_translate("ScoreRecord", "<< BACK "))
+        self.btn_predict.setText(_translate("ScoreRecord", "PREDICT"))
+        self.label_error.setText(_translate("ScoreRecord", "Please Enter all fields"))
 
 
 if __name__ == "__main__":
