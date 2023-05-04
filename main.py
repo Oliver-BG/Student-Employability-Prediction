@@ -162,6 +162,8 @@ class ScoreRecord(qtw.QWidget):
         self.ui_result_window = ResultWindow(self.info, self.name_record, self)
         widgets.addWidget(self.ui_result_window)
         widgets.setCurrentIndex(widgets.currentIndex() + 1)
+
+"""********************************* RESULT WINDOW *************************************"""
         
 class ResultWindow(qtw.QWidget):
     def __init__(self, info, name_record, score_record):
