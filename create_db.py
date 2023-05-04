@@ -1,6 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, Float
+from statistics import fmean
 import os
 
 Base = declarative_base()
@@ -20,9 +21,10 @@ class Record(Base):
     abilitity_to_present_ideas  = Column(Integer, nullable = False)
     communication_skills  = Column(Integer, nullable = False)
     student_performance_rating  = Column(Integer, nullable = False)
-    prediction = Column(String(22))
+    mean_score = Column(Float, nullable = False)
+    prediction = Column(String(22), nullable = False)
 
-    def __init__(self, fn, ln, ga, mos, pc, ma, sc , atpi, cs, spr, pred = None):
+    def __init__(self, fn, ln, ga, mos, pc, ma, sc, atpi, cs, spr, pred):
         """ CONSTRUCTOR """
 
         self.first_name = fn
@@ -36,6 +38,9 @@ class Record(Base):
         self.abilitity_to_present_ideas  = atpi
         self.communication_skills  = cs
         self.student_performance_rating  = spr
+
+        self.mean_score = fmean([ga,mos,pc,ma,sc,atpi,cs,spr])
+
         self.prediction = pred
 
     def __repr__(self):
