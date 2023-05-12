@@ -13,7 +13,7 @@ class Record(Base):
     first_name = Column(String(22), nullable = False)
     last_name = Column(String(22), nullable = False)
 
-    general_appearence = Column(Integer, nullable = False)
+    general_appearance = Column(Integer, nullable = False)
     manner_of_speaking  = Column(Integer, nullable = False)
     physical_condition = Column(Integer, nullable = False)
     mental_alertness  = Column(Integer, nullable = False)
@@ -30,7 +30,7 @@ class Record(Base):
         self.first_name = fn
         self.last_name = ln
 
-        self.general_appearence = ga
+        self.general_appearance = ga
         self.manner_of_speaking  = mos
         self.physical_condition = pc
         self.mental_alertness  = ma
@@ -52,7 +52,7 @@ class Record(Base):
                 LAST NAME = {self.last_name}
 
                     CATEGORY:                     SCORE:
-                    1.) General Appearence ---------- {self.general_appearence}
+                    1.) General Appearence ---------- {self.general_appearance}
                     2.) Manner of Speaking ---------- {self.manner_of_speaking}
                     3.) Physical Condition ---------- {self.physical_condition}
                     4.) Mental Alertness ------------ {self.mental_alertness}

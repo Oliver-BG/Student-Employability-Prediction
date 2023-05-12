@@ -10,7 +10,6 @@ class RandomForestModel:
 if __name__ == "__main__":
 
     # TEST
-
     model = RandomForestModel()
     print(model.ref_cols)
     print(model.make_prediction([1,2,3,4,5,5,3,3]))

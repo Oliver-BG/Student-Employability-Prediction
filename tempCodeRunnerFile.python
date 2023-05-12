@@ -1,0 +1,2 @@
+for y in range(12,1,-2): # (START, STOP, SKIP)
+    print(y+1)
