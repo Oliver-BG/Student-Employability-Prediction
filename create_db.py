@@ -67,9 +67,11 @@ class Record(Base):
             """
         )
 
-BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+# BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
-connection_string = 'sqlite:///' + os.path.join(BASE_DIR, 'records.db')
+#connection_string = 'sqlite:///' + os.path.join(BASE_DIR, #'records.db')
+
+connection_string = 'mysql+pymysql://root:admin@localhost:3306/record'
 
 engine = create_engine(connection_string, echo = True)
 
