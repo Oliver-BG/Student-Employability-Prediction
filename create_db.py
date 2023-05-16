@@ -6,23 +6,24 @@ import os
 
 Base = declarative_base()
 
+
 class Record(Base):
     __tablename__ = "Record"
 
-    id = Column(Integer, primary_key = True)
-    first_name = Column(String(22), nullable = False)
-    last_name = Column(String(22), nullable = False)
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String(22), nullable=False)
+    last_name = Column(String(22), nullable=False)
 
-    general_appearance = Column(Integer, nullable = False)
-    manner_of_speaking  = Column(Integer, nullable = False)
-    physical_condition = Column(Integer, nullable = False)
-    mental_alertness  = Column(Integer, nullable = False)
-    self_confidence = Column(Integer, nullable = False)
-    abilitity_to_present_ideas  = Column(Integer, nullable = False)
-    communication_skills  = Column(Integer, nullable = False)
-    student_performance_rating  = Column(Integer, nullable = False)
-    mean_score = Column(Float, nullable = False)
-    prediction = Column(String(22), nullable = False)
+    general_appearance = Column(Integer, nullable=False)
+    manner_of_speaking = Column(Integer, nullable=False)
+    physical_condition = Column(Integer, nullable=False)
+    mental_alertness = Column(Integer, nullable=False)
+    self_confidence = Column(Integer, nullable=False)
+    abilitity_to_present_ideas = Column(Integer, nullable=False)
+    communication_skills = Column(Integer, nullable=False)
+    student_performance_rating = Column(Integer, nullable=False)
+    mean_score = Column(Float, nullable=False)
+    prediction = Column(String(22), nullable=False)
 
     def __init__(self, fn, ln, ga, mos, pc, ma, sc, atpi, cs, spr, pred):
         """ CONSTRUCTOR """
@@ -31,15 +32,15 @@ class Record(Base):
         self.last_name = ln
 
         self.general_appearance = ga
-        self.manner_of_speaking  = mos
+        self.manner_of_speaking = mos
         self.physical_condition = pc
-        self.mental_alertness  = ma
+        self.mental_alertness = ma
         self.self_confidence = sc
-        self.abilitity_to_present_ideas  = atpi
-        self.communication_skills  = cs
-        self.student_performance_rating  = spr
+        self.abilitity_to_present_ideas = atpi
+        self.communication_skills = cs
+        self.student_performance_rating = spr
 
-        self.mean_score = fmean([ga,mos,pc,ma,sc,atpi,cs,spr])
+        self.mean_score = fmean([ga, mos, pc, ma, sc, atpi, cs, spr])
 
         self.prediction = pred
 
@@ -69,21 +70,21 @@ class Record(Base):
 
 # BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
-#connection_string = 'sqlite:///' + os.path.join(BASE_DIR, #'records.db')
+# connection_string = 'sqlite:///' + os.path.join(BASE_DIR, #'records.db')
+
 
 connection_string = 'mysql+pymysql://root:admin@localhost:3306/record'
 
-engine = create_engine(connection_string, echo = True)
+engine = create_engine(connection_string, echo=True)
 
 Session = sessionmaker()
-session = Session(bind = engine)
+session = Session(bind=engine)
+
 
 def create_all_table():
     Base.metadata.create_all(engine)
 
+
 if __name__ == "__main__":
     create_all_table()
-
-    
-
-
+    print(Base.metadata.tables.keys())
